@@ -7,7 +7,10 @@ async function connectToDatabase(): Promise<Boolean> {
         info('Database Connection Established Successfully...', connection.isInitialized);
         return connection.isInitialized;
     } catch (errors) {
-        error('Failed to connect to database:', errors);
+        error('Failed to connect to database:', {
+            message: errors instanceof Error ? errors.message : String(errors),
+            stack: errors instanceof Error ? errors.stack : undefined
+        });
         return false;
     }
 }
