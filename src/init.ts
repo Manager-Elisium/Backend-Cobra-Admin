@@ -37,6 +37,10 @@ router.use("/badge", BadgeRouter);
 import { SeasonRouter } from "./router/season.router";
 router.use("/season", SeasonRouter);
 
+import { BugTicketRouter } from "./router/bug-ticket.router";
+router.use("/bug-ticket", BugTicketRouter);
+router.use("/report", BugTicketRouter);  // Alias for reports
+
 router.use((req: Request, res: Response, next: NextFunction) => {
     next(res.status(404).json({ status: false, message: "Not Found." }));
 });
